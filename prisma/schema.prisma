@@ -1,0 +1,111 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum RoleUser {
+  High
+  Medium
+  Low
+  Author
+}
+
+enum JenisPengaju {
+  Individu
+  Instansi
+  Komunitas
+}
+
+enum StatusPengajuan {
+  Pending
+  Diterima
+  Revisi
+}
+
+model ih_ppkwpl_user {
+  id                Int      @id @default(autoincrement())
+  email_or_username String   @unique
+  password          String
+  no_telepon        String?
+  role_user         RoleUser
+  created_at        DateTime @default(now())
+  updated_at        DateTime @updatedAt
+
+  // Relations
+  tokens           ih_ppkwpl_user_token[]
+  pengajuan        ih_ppkwpl_form_pengajuan[] @relation("PengajuRelation")
+  review_pengajuan ih_ppkwpl_form_pengajuan[] @relation("ReviewerRelation")
+  articles         ih_ppkwpl_article[]
+}
+
+model ih_ppkwpl_user_token {
+  id            Int      @id @default(autoincrement())
+  user_id       Int
+  refresh_token String
+  is_valid      Boolean  @default(true)
+  created_at    DateTime @default(now())
+  expired_at    DateTime
+
+  user ih_ppkwpl_user @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model ih_ppkwpl_form_pengajuan {
+  id                      Int             @id @default(autoincrement())
+  user_id                 Int
+  nama_pengaju            String
+  jenis_pengaju           JenisPengaju
+  nama_instansi_komunitas String?
+  upload_foto_ktp         String
+  upload_surat_pengantar  String
+  status_pengajuan        StatusPengajuan @default(Pending)
+  catatan_reviewer        String?
+  reviewer_id             Int?
+  reviewed_at             DateTime?
+  created_at              DateTime        @default(now())
+  updated_at              DateTime        @updatedAt
+
+  pengaju  ih_ppkwpl_user  @relation("PengajuRelation", fields: [user_id], references: [id], onDelete: Cascade)
+  reviewer ih_ppkwpl_user? @relation("ReviewerRelation", fields: [reviewer_id], references: [id])
+}
+
+model ih_ppkwpl_main_data {
+  id              Int      @id @default(autoincrement())
+  tahun           Int
+  nama_anggota    String
+  provinsi        String
+  kab_kota        String
+  kegiatan        String
+  lokasi_fisik    String
+  longitude       String
+  latitude        String
+  kapasitas       String
+  penurunan_beban Float
+  dokumentasi     String
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+}
+
+model ih_ppkwpl_article {
+  id         Int      @id @default(autoincrement())
+  title      String
+  slug       String   @unique
+  content    String
+  excerpt    String?
+  published  Boolean  @default(false)
+  author_id  Int
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  author ih_ppkwpl_user @relation(fields: [author_id], references: [id], onDelete: Cascade)
+}

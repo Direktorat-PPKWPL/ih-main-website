@@ -1,0 +1,57 @@
+erDiagram
+
+	ih_ppkwpl_user {
+		int id PK "Auto Increment"
+		string email_or_username "UNIQUE"
+		string password "Hashed password"
+		string no_telepon
+		enum role_user "High, Medium, Low"
+		datetime created_at
+		datetime updated_at
+	}
+
+	ih_ppkwpl_user_token {
+		int id PK "Auto Increment"
+		int user_id FK
+		string refresh_token
+		boolean is_valid
+		datetime created_at
+		datetime expired_at
+	}
+
+	ih_ppkwpl_form_pengajuan {
+		int id PK "Auto Increment"
+		int user_id FK "User pengaju"
+		string nama_pengaju
+		enum jenis_pengaju "Individu, Instansi, Komunitas"
+		string nama_instansi_komunitas
+		text upload_foto_ktp
+		text upload_surat_pengantar
+		enum status_pengajuan "Pending, Diterima, Revisi"
+		text catatan_reviewer
+		int reviewer_id FK "User role High"
+		datetime reviewed_at
+		datetime created_at
+		datetime updated_at
+	}
+
+	ih_ppkwpl_main_data {
+		int id PK "Auto Increment"
+		int tahun
+		string nama_anggota
+		string provinsi
+		string kab_kota
+		string kegiatan
+		string lokasi_fisik
+		string longitude
+		string latitude
+		string kapasitas
+		float penurunan_beban
+		text dokumentasi
+		datetime created_at
+		datetime updated_at
+	}
+
+	ih_ppkwpl_user ||--o{ ih_ppkwpl_user_token : "memiliki refresh token"
+	ih_ppkwpl_user ||--o{ ih_ppkwpl_form_pengajuan : "mengajukan"
+	ih_ppkwpl_user ||--o{ ih_ppkwpl_form_pengajuan : "mereview"
