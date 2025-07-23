@@ -32,7 +32,6 @@ export default function LoginPage() {
       const data = await response.json();
 
       if (data.success) {
-        // Redirect to appropriate dashboard based on role
         const dashboardPath = getDashboardPath(data.user.role);
         router.push(dashboardPath);
       } else {

@@ -14,12 +14,10 @@ export default function AccessibilityModal({ isOpen, onClose }: AccessibilityMod
   const [colorBlindMode, setColorBlindMode] = useState('none');
 
   useEffect(() => {
-    // Apply font size changes
     document.documentElement.style.fontSize = `${fontSize}px`;
   }, [fontSize]);
 
   useEffect(() => {
-    // Apply high contrast mode
     if (highContrast) {
       document.documentElement.classList.add('high-contrast');
     } else {
@@ -28,7 +26,6 @@ export default function AccessibilityModal({ isOpen, onClose }: AccessibilityMod
   }, [highContrast]);
 
   useEffect(() => {
-    // Apply reduced motion
     if (reduceMotion) {
       document.documentElement.classList.add('reduce-motion');
     } else {
@@ -37,7 +34,6 @@ export default function AccessibilityModal({ isOpen, onClose }: AccessibilityMod
   }, [reduceMotion]);
 
   useEffect(() => {
-    // Apply screen reader optimizations
     if (screenReader) {
       document.documentElement.classList.add('screen-reader-mode');
     } else {
@@ -46,7 +42,6 @@ export default function AccessibilityModal({ isOpen, onClose }: AccessibilityMod
   }, [screenReader]);
 
   useEffect(() => {
-    // Apply color blind mode
     document.documentElement.setAttribute('data-colorblind', colorBlindMode);
   }, [colorBlindMode]);
 

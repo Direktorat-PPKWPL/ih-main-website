@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { JSX } from 'react/jsx-runtime'
 
 interface DashboardLayoutProps {
   children: React.ReactNode

@@ -25,19 +25,16 @@ export default function DashboardLayout({ children, user, title }: DashboardLayo
       });
       
       if (response.ok) {
-        // Clear any client-side storage if needed
         localStorage.clear();
         sessionStorage.clear();
         
-        // Redirect to login
         router.push('/login');
-        router.refresh(); // Force a refresh to clear any cached data
+        router.refresh(); 
       } else {
         console.error('Logout failed');
       }
     } catch (error) {
       console.error('Logout error:', error);
-      // Even if logout fails, redirect to login as a fallback
       router.push('/login');
     }
   };
