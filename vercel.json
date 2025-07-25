@@ -1,0 +1,62 @@
+{
+  "buildCommand": "npm run vercel-build",
+  "framework": "nextjs",
+  "regions": ["sin1"],
+  "projectSettings": {
+    "commandForIgnoringBuildStep": "git diff HEAD^ HEAD --quiet . ':!README.md'"
+  },
+  "env": {
+    "ENABLE_REQUEST_LOGGING": "true",
+    "NODE_ENV": "production"
+  },
+  "build": {
+    "env": {
+      "DATABASE_URL": "@database_url",
+      "JWT_SECRET": "@jwt_secret",
+      "JWT_REFRESH_SECRET": "@jwt_refresh_secret"
+    }
+  },
+  "functions": {
+    "app/**/*.ts": {
+      "maxDuration": 30
+    },
+    "app/**/*.js": {
+      "maxDuration": 30
+    },
+    "api/**/*.ts": {
+      "maxDuration": 30
+    }
+  },
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    }
+  ],
+  "installCommand": "npm ci",
+  "crons": [
+    {
+      "path": "/api/health",
+      "schedule": "0 */6 * * *"
+    }
+  ]
+}
