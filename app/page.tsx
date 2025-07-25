@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { ChevronDownIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import AccessibilityModal from "./components/AccessibilityModal";
+import InfrastructureMapWrapper from "./components/InfrastructureMapWrapper";
 import "./accessibility.css";
 
 export default function Home() {
@@ -469,23 +470,52 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className={`container mx-auto px-6 lg:px-8 py-20 text-center max-w-7xl transition-all duration-1000 delay-900 ${
+      {/* Infrastructure Achievements Map Section */}
+      <section
+      className={`container mx-auto px-6 lg:px-8 py-12 max-w-7xl transition-all duration-1000 delay-800 ${
         isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-      }`} role="region" aria-labelledby="cta-heading">
-        <h2 id="cta-heading" className="text-4xl font-bold text-teal-800 mb-6">
-          Ready to Go Green?
+      }`}
+      role="region"
+      aria-labelledby="achievements-heading"
+    >
+      <div className="text-center mb-12">
+        <h2 id="achievements-heading" className="text-4xl font-bold text-teal-800 mb-6">
+          Capaian Infrastruktur Hijau di Indonesia
         </h2>
-        <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-          Join thousands of organizations building a more sustainable future with our green infrastructure solutions.
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Jelajahi proyek-proyek infrastruktur hijau yang telah berhasil diimplementasikan di berbagai daerah Indonesia.
+          Lihat detail lokasi, timeline, anggaran, dan dampak positif yang telah dicapai.
         </p>
-        <button className="bg-orange-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-orange-700 transition-all duration-300 hover:scale-105 hover:shadow-lg" aria-label="Mulai proyek infrastruktur hijau Anda hari ini">
-          Start Your Project Today
-        </button>
-      </section>
+      </div>
+
+      <InfrastructureMapWrapper className="w-full" />
+    </section>
+
+    {/* CTA Section */}
+    <section
+      className={`container mx-auto px-6 lg:px-8 py-12 text-center max-w-7xl transition-all duration-1000 delay-1000 ${
+        isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+      }`}
+      role="region"
+      aria-labelledby="cta-heading"
+    >
+      <h2 id="cta-heading" className="text-4xl font-bold text-teal-800 mb-6">
+        Butuh Infrastruktur yang Lebih Baik?
+      </h2>
+      <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+        Kini saatnya bergerak bersama membangun infrastruktur yang tangguh, ramah lingkungan, dan berdampak langsung bagi masyarakat.
+      </p>
+      <button
+        className="bg-orange-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-orange-700 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+        aria-label="Mulai proyek infrastruktur hijau Anda hari ini"
+      >
+        Ajukan Sekarang
+      </button>
+    </section>
+
 
       {/* Footer */}
-      <footer className={`bg-white py-6 transition-all duration-1000 delay-1100 ${
+      <footer className={`bg-white py-6 transition-all duration-1000 delay-1200 ${
         isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
       }`} role="contentinfo">
         <div className="container mx-auto px-6 lg:px-8 max-w-7xl">

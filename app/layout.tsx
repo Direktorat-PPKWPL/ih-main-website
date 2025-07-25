@@ -9,7 +9,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Infrastruktur Hijau - Building a Sustainable Future",
+  title: "Infrastruktur Hijau - Untuk Masa Depan Bumi",
   description:
     "Discover innovative green infrastructure solutions that transform urban spaces into sustainable, eco-friendly environments for future generations.",
 };

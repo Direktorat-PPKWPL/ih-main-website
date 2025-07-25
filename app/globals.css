@@ -11,7 +11,8 @@
   --color-accent-light: #a5c9ff;
 }
 
-@theme inline {
+/* Tailwind custom properties */
+:root {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-poppins);
@@ -38,5 +39,48 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-poppins), 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Leaflet map improvements */
+.leaflet-container {
+  font-family: var(--font-poppins), 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 8px !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+.leaflet-popup-content {
+  font-family: var(--font-poppins), 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  margin: 8px 12px !important;
+}
+
+.leaflet-popup-tip {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Ensure text is always visible with good contrast */
+.font-sans {
+  font-family: var(--font-poppins), 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Modal backdrop improvements */
+.modal-backdrop {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Mobile responsive improvements */
+@media (max-width: 640px) {
+  .leaflet-control-container {
+    font-size: 14px;
+  }
+  
+  .leaflet-popup-content {
+    font-size: 12px !important;
+  }
 }
