@@ -22,14 +22,17 @@ import {
   TrendingUp,
   Clock,
   User,
-  Home
+  Home,
+  ChevronDown,
+  ChevronRight
 } from 'lucide-react';
 
 interface SidebarItem {
   title: string;
-  href: string;
+  href?: string;
   icon: React.ComponentType<any>;
   description?: string;
+  children?: SidebarItem[];
 }
 
 interface SidebarProps {
@@ -40,40 +43,136 @@ interface SidebarProps {
 const sidebarItems: Record<string, SidebarItem[]> = {
   'High': [
     { title: 'Dashboard', href: '/dashboard/admin', icon: Home },
-    { title: 'Manajemen Pengguna', href: '/dashboard/admin/users', icon: Users },
-    { title: 'Review Pengajuan', href: '/dashboard/admin/reviews', icon: FileText },
-    { title: 'Manajemen Dokumen', href: '/dashboard/admin/documents', icon: Upload },
-    { title: 'Laporan & Analytics', href: '/dashboard/admin/analytics', icon: BarChart3 },
-    { title: 'Pengaturan Sistem', href: '/dashboard/admin/settings', icon: Settings },
-    { title: 'Keamanan & Audit', href: '/dashboard/admin/security', icon: Shield },
+    { 
+      title: 'Manajemen User', 
+      icon: Users,
+      children: [
+        { title: 'Daftar Pengguna', href: '/dashboard/admin/users', icon: Users },
+        { title: 'Review Pengajuan', href: '/dashboard/admin/reviews', icon: FileText }
+      ]
+    },
+    { 
+      title: 'Konten & Artikel', 
+      icon: BookOpen,
+      children: [
+        { title: 'Tulis Artikel Baru', href: '/dashboard/admin/articles/new', icon: PenTool },
+        { title: 'Kelola Artikel', href: '/dashboard/admin/articles', icon: BookOpen },
+        { title: 'Draft Artikel', href: '/dashboard/admin/drafts', icon: Edit3 }
+      ]
+    },
+    { 
+      title: 'Sistem & Data', 
+      icon: Settings,
+      children: [
+        { title: 'Manajemen Dokumen', href: '/dashboard/admin/documents', icon: Upload },
+        { title: 'Pengaturan', href: '/dashboard/admin/settings', icon: Settings }
+      ]
+    },
+    { title: 'Analytics & Laporan', href: '/dashboard/admin/analytics', icon: BarChart3 }
   ],
   'Medium': [
     { title: 'Dashboard', href: '/dashboard/user', icon: Home },
-    { title: 'Buat Pengajuan Baru', href: '/dashboard/user/pengajuan/new', icon: FileText },
-    { title: 'Riwayat Pengajuan', href: '/dashboard/user/pengajuan/history', icon: Clock },
+    { 
+      title: 'Pengajuan', 
+      icon: FileText,
+      children: [
+        { title: 'Buat Pengajuan Baru', href: '/dashboard/user/pengajuan/new', icon: FileText },
+        { title: 'Riwayat Pengajuan', href: '/dashboard/user/pengajuan/history', icon: Clock }
+      ]
+    },
     { title: 'Upload Ulang Dokumen', href: '/dashboard/user/reupload', icon: Upload },
-    { title: 'Profil Saya', href: '/dashboard/user/profile', icon: User },
+    { title: 'Profil Saya', href: '/dashboard/user/profile', icon: User }
   ],
   'Low': [
     { title: 'Dashboard', href: '/dashboard/viewer', icon: Home },
-    { title: 'Lihat Data Infrastruktur', href: '/dashboard/viewer/infrastructure', icon: Eye },
-    { title: 'Statistik & Laporan', href: '/dashboard/viewer/reports', icon: BarChart3 },
-    { title: 'Peta Infrastruktur', href: '/dashboard/viewer/maps', icon: MapPin },
-    { title: 'Dokumentasi', href: '/dashboard/viewer/documents', icon: FileText },
-  ],
-  'Author': [
-    { title: 'Dashboard', href: '/dashboard/author', icon: Home },
-    { title: 'Tulis Artikel Baru', href: '/dashboard/author/articles/new', icon: PenTool },
-    { title: 'Artikel Saya', href: '/dashboard/author/articles', icon: BookOpen },
-    { title: 'Draft Artikel', href: '/dashboard/author/drafts', icon: Edit3 },
-    { title: 'Statistik & Analytics', href: '/dashboard/author/analytics', icon: TrendingUp },
-  ],
+    { 
+      title: 'Data & Informasi', 
+      icon: Eye,
+      children: [
+        { title: 'Data Infrastruktur', href: '/dashboard/viewer/infrastructure', icon: Eye },
+        { title: 'Peta Infrastruktur', href: '/dashboard/viewer/maps', icon: MapPin },
+        { title: 'Dokumentasi', href: '/dashboard/viewer/documents', icon: FileText }
+      ]
+    },
+    { title: 'Laporan & Statistik', href: '/dashboard/viewer/reports', icon: BarChart3 }
+  ]
 };
 
 export default function Sidebar({ role, className }: SidebarProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [expandedItems, setExpandedItems] = useState<string[]>([]);
   const pathname = usePathname();
   const items = sidebarItems[role] || [];
+
+  const toggleExpanded = (title: string) => {
+    setExpandedItems(prev => 
+      prev.includes(title) 
+        ? prev.filter(item => item !== title)
+        : [...prev, title]
+    );
+  };
+
+  const renderMenuItem = (item: SidebarItem, level = 0) => {
+    const Icon = item.icon;
+    const hasChildren = item.children && item.children.length > 0;
+    const isExpanded = expandedItems.includes(item.title);
+    const isActive = item.href ? pathname === item.href : false;
+    const hasActiveChild = hasChildren && item.children?.some(child => pathname === child.href);
+
+    if (hasChildren) {
+      return (
+        <div key={item.title}>
+          <button
+            onClick={() => toggleExpanded(item.title)}
+            className={cn(
+              "w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+              hasActiveChild || isExpanded
+                ? "bg-orange-50 text-orange-700 border-l-2 border-orange-600"
+                : "text-gray-800 hover:bg-orange-50 hover:text-orange-700",
+              level > 0 && "ml-4"
+            )}
+          >
+            <div className="flex items-center">
+              <Icon className="mr-3 h-5 w-5 flex-shrink-0" />
+              <span className="truncate">{item.title}</span>
+            </div>
+            {isExpanded ? (
+              <ChevronDown className="h-4 w-4 flex-shrink-0" />
+            ) : (
+              <ChevronRight className="h-4 w-4 flex-shrink-0" />
+            )}
+          </button>
+          {isExpanded && (
+            <div className="mt-1 space-y-1">
+              {item.children?.map(child => renderMenuItem(child, level + 1))}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    if (item.href) {
+      return (
+          <Link
+            key={item.href}
+            href={item.href}
+            onClick={() => setIsOpen(false)}
+            className={cn(
+              "flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+              isActive
+                ? "bg-orange-100 text-orange-800 border-l-2 border-orange-600 font-semibold"
+                : "text-gray-800 hover:bg-orange-50 hover:text-orange-700",
+              level > 0 && "ml-8"
+            )}
+        >
+          <Icon className="mr-3 h-5 w-5 flex-shrink-0" />
+          <span className="truncate">{item.title}</span>
+        </Link>
+      );
+    }
+
+    return null;
+  };
 
   return (
     <>
@@ -107,7 +206,7 @@ export default function Sidebar({ role, className }: SidebarProps) {
           {/* Logo/Header */}
           <div className="p-6 border-b border-gray-200">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-teal-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">IH</span>
               </div>
               <span className="font-semibold text-gray-900">Infrastruktur Hijau</span>
@@ -116,27 +215,7 @@ export default function Sidebar({ role, className }: SidebarProps) {
 
           {/* Navigation */}
           <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
-            {items.map((item) => {
-              const Icon = item.icon;
-              const isActive = pathname === item.href;
-              
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className={cn(
-                    "flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors",
-                    isActive
-                      ? "bg-teal-100 text-teal-700 border-r-2 border-teal-600"
-                      : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                  )}
-                >
-                  <Icon className="mr-3 h-5 w-5 flex-shrink-0" />
-                  <span className="truncate">{item.title}</span>
-                </Link>
-              );
-            })}
+            {items.map(item => renderMenuItem(item))}
           </nav>
 
           {/* Footer */}

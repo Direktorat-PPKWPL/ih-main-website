@@ -30,18 +30,16 @@ export default function DashboardHeader({ user, title }: DashboardHeaderProps) {
     const roleNames: Record<string, string> = {
       'High': 'Administrator',
       'Medium': 'User',
-      'Low': 'Viewer',
-      'Author': 'Penulis'
+      'Low': 'Viewer'
     };
     return roleNames[role] || role;
   };
 
   const getRoleColor = (role: string) => {
     const colors: Record<string, string> = {
-      'High': 'bg-red-100 text-red-800',
+      'High': 'bg-orange-100 text-orange-800',
       'Medium': 'bg-blue-100 text-blue-800',
-      'Low': 'bg-gray-100 text-gray-800',
-      'Author': 'bg-green-100 text-green-800'
+      'Low': 'bg-teal-100 text-teal-800'
     };
     return colors[role] || 'bg-gray-100 text-gray-800';
   };

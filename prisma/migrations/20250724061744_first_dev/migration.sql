@@ -10,6 +10,7 @@ CREATE TYPE "StatusPengajuan" AS ENUM ('Pending', 'Diterima', 'Revisi');
 -- CreateTable
 CREATE TABLE "ih_ppkwpl_user" (
     "id" SERIAL NOT NULL,
+    "name" TEXT,
     "email_or_username" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "no_telepon" TEXT,
@@ -71,8 +72,26 @@ CREATE TABLE "ih_ppkwpl_main_data" (
     CONSTRAINT "ih_ppkwpl_main_data_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "ih_ppkwpl_article" (
+    "id" SERIAL NOT NULL,
+    "title" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
+    "content" TEXT NOT NULL,
+    "excerpt" TEXT,
+    "published" BOOLEAN NOT NULL DEFAULT false,
+    "author_id" INTEGER NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "ih_ppkwpl_article_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "ih_ppkwpl_user_email_or_username_key" ON "ih_ppkwpl_user"("email_or_username");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "ih_ppkwpl_article_slug_key" ON "ih_ppkwpl_article"("slug");
 
 -- AddForeignKey
 ALTER TABLE "ih_ppkwpl_user_token" ADD CONSTRAINT "ih_ppkwpl_user_token_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "ih_ppkwpl_user"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -82,3 +101,6 @@ ALTER TABLE "ih_ppkwpl_form_pengajuan" ADD CONSTRAINT "ih_ppkwpl_form_pengajuan_
 
 -- AddForeignKey
 ALTER TABLE "ih_ppkwpl_form_pengajuan" ADD CONSTRAINT "ih_ppkwpl_form_pengajuan_reviewer_id_fkey" FOREIGN KEY ("reviewer_id") REFERENCES "ih_ppkwpl_user"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "ih_ppkwpl_article" ADD CONSTRAINT "ih_ppkwpl_article_author_id_fkey" FOREIGN KEY ("author_id") REFERENCES "ih_ppkwpl_user"("id") ON DELETE CASCADE ON UPDATE CASCADE;

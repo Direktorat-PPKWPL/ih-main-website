@@ -64,19 +64,19 @@ export default async function UserManagementPage() {
 
   const getRoleColor = (role: string) => {
     switch (role) {
-      case 'High': return 'bg-red-100 text-red-800';
+      case 'High': return 'bg-orange-100 text-orange-800';
       case 'Medium': return 'bg-blue-100 text-blue-800';
-      case 'Low': return 'bg-green-100 text-green-800';
-      case 'Author': return 'bg-purple-100 text-purple-800';
+      case 'Low': return 'bg-teal-100 text-teal-800';
+      case 'Author': return 'bg-orange-100 text-orange-800';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'bg-green-100 text-green-800';
+      case 'active': return 'bg-teal-100 text-teal-800';
       case 'inactive': return 'bg-gray-100 text-gray-800';
-      case 'pending': return 'bg-yellow-100 text-yellow-800';
+      case 'pending': return 'bg-orange-100 text-orange-800';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
@@ -97,7 +97,7 @@ export default async function UserManagementPage() {
                 <p className="text-gray-600">Kelola pengguna sistem infrastruktur hijau</p>
               </div>
             </div>
-            <Button className="bg-blue-600 hover:bg-blue-700">
+            <Button className="bg-teal-600 hover:bg-teal-700">
               <Plus className="h-4 w-4 mr-2" />
               Tambah Pengguna
             </Button>
@@ -113,7 +113,7 @@ export default async function UserManagementPage() {
                   <p className="text-sm font-medium text-gray-600">Total Pengguna</p>
                   <p className="text-2xl font-bold text-gray-900">142</p>
                 </div>
-                <Users className="h-8 w-8 text-blue-500" />
+                <Users className="h-8 w-8 text-teal-600" />
               </div>
             </CardContent>
           </Card>
@@ -125,7 +125,7 @@ export default async function UserManagementPage() {
                   <p className="text-sm font-medium text-gray-600">Pengguna Aktif</p>
                   <p className="text-2xl font-bold text-gray-900">128</p>
                 </div>
-                <UserCheck className="h-8 w-8 text-green-500" />
+                <UserCheck className="h-8 w-8 text-teal-600" />
               </div>
             </CardContent>
           </Card>
@@ -137,7 +137,7 @@ export default async function UserManagementPage() {
                   <p className="text-sm font-medium text-gray-600">Registrasi Hari Ini</p>
                   <p className="text-2xl font-bold text-gray-900">5</p>
                 </div>
-                <Plus className="h-8 w-8 text-purple-500" />
+                <Plus className="h-8 w-8 text-orange-600" />
               </div>
             </CardContent>
           </Card>
@@ -149,7 +149,7 @@ export default async function UserManagementPage() {
                   <p className="text-sm font-medium text-gray-600">Pending Approval</p>
                   <p className="text-2xl font-bold text-gray-900">9</p>
                 </div>
-                <Filter className="h-8 w-8 text-yellow-500" />
+                <Filter className="h-8 w-8 text-orange-600" />
               </div>
             </CardContent>
           </Card>
@@ -165,17 +165,17 @@ export default async function UserManagementPage() {
                   <input
                     type="text"
                     placeholder="Cari pengguna..."
-                    className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
                   />
                 </div>
-                <select className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <select className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500">
                   <option value="">Semua Role</option>
                   <option value="High">Administrator</option>
                   <option value="Medium">User</option>
                   <option value="Low">Viewer</option>
                   <option value="Author">Author</option>
                 </select>
-                <select className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <select className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500">
                   <option value="">Semua Status</option>
                   <option value="active">Aktif</option>
                   <option value="inactive">Tidak Aktif</option>

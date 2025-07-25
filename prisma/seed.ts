@@ -11,59 +11,51 @@ async function main() {
 
   // Create admin user dengan role High
   const adminUser = await prisma.ih_ppkwpl_user.upsert({
-    where: { email_or_username: 'admin@example.com' },
+    where: { email: 'admin@example.com' },
     update: {},
     create: {
-      email_or_username: 'admin@example.com',
+      name: 'Administrator',
+      username: 'admin',
+      email: 'admin@example.com',
       password: hashedPassword,
       no_telepon: '+621234567890',
       role_user: 'High',
     },
   });
 
-  console.log('✅ Admin user created:', adminUser.email_or_username);
+  console.log('✅ Admin user created:', adminUser.email);
 
   // Create sample Medium user
   const mediumUser = await prisma.ih_ppkwpl_user.upsert({
-    where: { email_or_username: 'user@example.com' },
+    where: { email: 'user@example.com' },
     update: {},
     create: {
-      email_or_username: 'user@example.com',
+      name: 'Medium User',
+      username: 'user',
+      email: 'user@example.com',
       password: hashedPassword,
       no_telepon: '+621234567891',
       role_user: 'Medium',
     },
   });
 
-  console.log('✅ Medium user created:', mediumUser.email_or_username);
+  console.log('✅ Medium user created:', mediumUser.email);
 
   // Create sample Low user
   const lowUser = await prisma.ih_ppkwpl_user.upsert({
-    where: { email_or_username: 'viewer@example.com' },
+    where: { email: 'viewer@example.com' },
     update: {},
     create: {
-      email_or_username: 'viewer@example.com',
+      name: 'Viewer User',
+      username: 'viewer',
+      email: 'viewer@example.com',
       password: hashedPassword,
       no_telepon: '+621234567892',
       role_user: 'Low',
     },
   });
 
-  console.log('✅ Low user created:', lowUser.email_or_username);
-
-  // Create sample Author user
-  const authorUser = await prisma.ih_ppkwpl_user.upsert({
-    where: { email_or_username: 'author@example.com' },
-    update: {},
-    create: {
-      email_or_username: 'author@example.com',
-      password: hashedPassword,
-      no_telepon: '+621234567893',
-      role_user: 'Author',
-    },
-  });
-
-  console.log('✅ Author user created:', authorUser.email_or_username);
+  console.log('✅ Low user created:', lowUser.email);
 
   // Create sample main data
   const sampleData = await prisma.ih_ppkwpl_main_data.createMany({
@@ -164,7 +156,7 @@ Infrastruktur hijau bukan hanya investasi untuk lingkungan, tetapi juga untuk ek
       `,
       excerpt: 'Infrastruktur hijau menjadi solusi inovatif untuk mengatasi tantangan perkotaan modern dengan berbagai manfaat untuk lingkungan dan masyarakat.',
       published: true,
-      author_id: authorUser.id,
+      author_id: adminUser.id,
     },
   });
 
@@ -183,10 +175,6 @@ Infrastruktur hijau bukan hanya investasi untuk lingkungan, tetapi juga untuk ek
   console.log('');
   console.log('Viewer (Low Role):');
   console.log('  Email: viewer@example.com');
-  console.log('  Password: supersecurepassword');
-  console.log('');
-  console.log('Author (Author Role):');
-  console.log('  Email: author@example.com');
   console.log('  Password: supersecurepassword');
   console.log('=======================');
 }

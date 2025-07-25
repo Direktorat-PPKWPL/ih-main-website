@@ -64,7 +64,7 @@ export default async function AnalyticsPage() {
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <BarChart3 className="h-8 w-8 text-green-600" />
+              <BarChart3 className="h-8 w-8 text-teal-600" />
               <div>
                 <h1 className="text-2xl font-bold text-gray-900">Laporan & Analytics</h1>
                 <p className="text-gray-600">Analisis dan statistik sistem infrastruktur hijau</p>
@@ -137,7 +137,7 @@ export default async function AnalyticsPage() {
                     <span className="text-sm text-gray-500 ml-1">dari bulan lalu</span>
                   </div>
                 </div>
-                <BarChart3 className="h-8 w-8 text-green-500" />
+                <BarChart3 className="h-8 w-8 text-teal-600" />
               </div>
             </CardContent>
           </Card>
@@ -149,12 +149,12 @@ export default async function AnalyticsPage() {
                   <p className="text-sm font-medium text-gray-600">Storage Usage</p>
                   <p className="text-2xl font-bold text-gray-900">{mockAnalytics.storageUsed} GB</p>
                   <div className="flex items-center mt-1">
-                    <TrendingUp className="h-4 w-4 text-green-500 mr-1" />
-                    <span className="text-sm text-green-600">+{mockAnalytics.monthlyGrowth.documents}%</span>
+                    <TrendingUp className="h-4 w-4 text-teal-600 mr-1" />
+                    <span className="text-sm text-teal-600">+{mockAnalytics.monthlyGrowth.documents}%</span>
                     <span className="text-sm text-gray-500 ml-1">bulan ini</span>
                   </div>
                 </div>
-                <Download className="h-8 w-8 text-purple-500" />
+                <Download className="h-8 w-8 text-orange-600" />
               </div>
             </CardContent>
           </Card>
@@ -176,11 +176,11 @@ export default async function AnalyticsPage() {
                         <span>{day.users} users</span>
                       </div>
                       <div className="flex items-center">
-                        <div className="w-3 h-3 bg-orange-500 rounded-full mr-1"></div>
+                        <div className="w-3 h-3 bg-orange-600 rounded-full mr-1"></div>
                         <span>{day.submissions} pengajuan</span>
                       </div>
                       <div className="flex items-center">
-                        <div className="w-3 h-3 bg-purple-500 rounded-full mr-1"></div>
+                        <div className="w-3 h-3 bg-teal-600 rounded-full mr-1"></div>
                         <span>{day.documents} dokumen</span>
                       </div>
                     </div>
@@ -301,7 +301,7 @@ export default async function AnalyticsPage() {
             <div className="space-y-3">
               <div className="flex items-center justify-between p-3 border rounded-lg">
                 <div className="flex items-center space-x-3">
-                  <FileText className="h-5 w-5 text-blue-500" />
+                  <FileText className="h-5 w-5 text-blue-600" />
                   <div>
                     <span className="text-sm font-medium text-gray-900">Laporan Bulanan - Januari 2025</span>
                     <p className="text-xs text-gray-500">Generated: 2025-01-23 10:30</p>
@@ -314,7 +314,7 @@ export default async function AnalyticsPage() {
               </div>
               <div className="flex items-center justify-between p-3 border rounded-lg">
                 <div className="flex items-center space-x-3">
-                  <BarChart3 className="h-5 w-5 text-green-500" />
+                  <BarChart3 className="h-5 w-5 text-teal-600" />
                   <div>
                     <span className="text-sm font-medium text-gray-900">Analisis Performa Q4 2024</span>
                     <p className="text-xs text-gray-500">Generated: 2025-01-20 15:45</p>

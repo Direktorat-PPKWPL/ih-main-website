@@ -60,7 +60,7 @@ export default async function AdminDashboard() {
                   <p className="text-sm font-medium text-gray-600">Pengajuan Pending</p>
                   <p className="text-2xl font-bold text-gray-900">23</p>
                 </div>
-                <FileText className="h-8 w-8 text-yellow-500" />
+                <FileText className="h-8 w-8 text-orange-600" />
               </div>
             </CardContent>
           </Card>
@@ -72,7 +72,7 @@ export default async function AdminDashboard() {
                   <p className="text-sm font-medium text-gray-600">Dokumen Total</p>
                   <p className="text-2xl font-bold text-gray-900">1,847</p>
                 </div>
-                <Upload className="h-8 w-8 text-green-500" />
+                <Upload className="h-8 w-8 text-teal-600" />
               </div>
             </CardContent>
           </Card>
@@ -84,7 +84,7 @@ export default async function AdminDashboard() {
                   <p className="text-sm font-medium text-gray-600">Status Sistem</p>
                   <p className="text-sm font-bold text-green-600">Online</p>
                 </div>
-                <Shield className="h-8 w-8 text-green-500" />
+                <Shield className="h-8 w-8 text-teal-600" />
               </div>
             </CardContent>
           </Card>

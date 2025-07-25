@@ -1,15 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { authenticateUser } from '@/lib/auth';
+import { Logger } from '@/lib/logger';
 
 export async function POST(request: NextRequest) {
+  const startTime = Date.now();
+  
   try {
     const { email_or_username, password } = await request.json();
 
     if (!email_or_username || !password) {
-      return NextResponse.json(
+      const response = NextResponse.json(
         { success: false, message: 'Email/username dan password harus diisi' },
         { status: 400 }
       );
+      Logger.logApiResponse(request, 400, startTime, undefined, 'Missing credentials');
+      return response;
     }
 
     const result = await authenticateUser(email_or_username, password);
@@ -30,16 +35,19 @@ export async function POST(request: NextRequest) {
         path: '/'
       });
 
+      Logger.logSuccess(request, `User ${result.user?.email} logged in successfully`, startTime, result.user?.id?.toString());
       return response;
     }
 
-    return NextResponse.json(
+    const response = NextResponse.json(
       { success: false, message: result.message },
       { status: 401 }
     );
+    Logger.logApiResponse(request, 401, startTime, undefined, 'Authentication failed');
+    return response;
 
   } catch (error) {
-    console.error('Login API error:', error);
+    Logger.logError(request, error, startTime);
     return NextResponse.json(
       { success: false, message: 'Terjadi kesalahan sistem' },
       { status: 500 }

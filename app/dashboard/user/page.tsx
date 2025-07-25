@@ -57,7 +57,7 @@ export default async function UserDashboard() {
 
         {/* Tips Section */}
         <div className="mb-8">
-          <Card className="border-l-4 border-l-teal-500">
+          <Card className="border-l-4 border-l-teal-600">
             <CardContent className="p-6">
               <h3 className="text-lg font-semibold text-slate-800 mb-2">💡 Tips Pengajuan</h3>
               <ul className="text-sm text-gray-600 space-y-2">
@@ -79,7 +79,7 @@ export default async function UserDashboard() {
                   <p className="text-sm font-medium text-gray-600">Total Pengajuan</p>
                   <p className="text-2xl font-bold text-gray-900">0</p>
                 </div>
-                <FileText className="h-8 w-8 text-blue-500" />
+                <FileText className="h-8 w-8 text-blue-600" />
               </div>
             </CardContent>
           </Card>
@@ -91,7 +91,7 @@ export default async function UserDashboard() {
                   <p className="text-sm font-medium text-gray-600">Dalam Proses</p>
                   <p className="text-2xl font-bold text-gray-900">0</p>
                 </div>
-                <FileText className="h-8 w-8 text-yellow-500" />
+                <FileText className="h-8 w-8 text-orange-600" />
               </div>
             </CardContent>
           </Card>
@@ -103,7 +103,7 @@ export default async function UserDashboard() {
                   <p className="text-sm font-medium text-gray-600">Disetujui</p>
                   <p className="text-2xl font-bold text-gray-900">0</p>
                 </div>
-                <FileText className="h-8 w-8 text-green-500" />
+                <FileText className="h-8 w-8 text-teal-600" />
               </div>
             </CardContent>
           </Card>

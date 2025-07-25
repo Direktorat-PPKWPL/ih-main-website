@@ -26,7 +26,7 @@
 
 /* Screen Reader Mode */
 .screen-reader-mode *:focus {
-  outline: 3px solid #f59e0b !important;
+  outline: 3px solid #f97a08 !important;
   outline-offset: 2px !important;
 }
 
@@ -67,7 +67,7 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #0d9488, #f59e0b);
+  background: linear-gradient(135deg, #005851, #f97a08);
   color: white;
   border: none;
   cursor: pointer;
@@ -84,7 +84,7 @@
 }
 
 .accessibility-button:focus {
-  outline: 3px solid #f59e0b;
+  outline: 3px solid #f97a08;
   outline-offset: 2px;
 }
 

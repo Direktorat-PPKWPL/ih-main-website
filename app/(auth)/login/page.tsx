@@ -48,8 +48,7 @@ export default function LoginPage() {
     const roleMap: Record<string, string> = {
       'High': '/dashboard/admin',
       'Medium': '/dashboard/user',
-      'Low': '/dashboard/viewer',
-      'Author': '/dashboard/author'
+      'Low': '/dashboard/viewer'
     };
     return roleMap[role] || '/dashboard/viewer';
   };
@@ -149,6 +148,15 @@ export default function LoginPage() {
             </form>
           </CardContent>
         </Card>
+        
+        <div className="text-center">
+          <p className="text-sm text-gray-600">
+            Belum punya akun?{' '}
+            <a href="/register" className="text-teal-600 hover:text-teal-800 font-medium hover:underline transition-colors">
+              Daftar di sini
+            </a>
+          </p>
+        </div>
         
         <div className="text-center text-sm text-gray-600">
           <p>Sistem Informasi Infrastruktur Hijau</p>

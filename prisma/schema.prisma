@@ -18,7 +18,6 @@ enum RoleUser {
   High
   Medium
   Low
-  Author
 }
 
 enum JenisPengaju {
@@ -35,7 +34,9 @@ enum StatusPengajuan {
 
 model ih_ppkwpl_user {
   id                Int      @id @default(autoincrement())
-  email_or_username String   @unique
+  name              String?
+  username          String   @unique
+  email             String   @unique
   password          String
   no_telepon        String?
   role_user         RoleUser

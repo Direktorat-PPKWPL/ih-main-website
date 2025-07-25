@@ -96,23 +96,23 @@ export default async function DocumentsPage() {
     switch (type.toLowerCase()) {
       case 'pdf': return <FileText className="h-5 w-5 text-red-500" />;
       case 'docx':
-      case 'doc': return <FileText className="h-5 w-5 text-blue-500" />;
+      case 'doc': return <FileText className="h-5 w-5 text-blue-600" />;
       case 'xlsx':
-      case 'xls': return <FileText className="h-5 w-5 text-green-500" />;
+      case 'xls': return <FileText className="h-5 w-5 text-teal-600" />;
       case 'jpg':
       case 'jpeg':
       case 'png':
-      case 'gif': return <Image className="h-5 w-5 text-purple-500" />;
+      case 'gif': return <Image className="h-5 w-5 text-orange-600" />;
       case 'zip':
-      case 'rar': return <File className="h-5 w-5 text-yellow-500" />;
+      case 'rar': return <File className="h-5 w-5 text-orange-600" />;
       default: return <File className="h-5 w-5 text-gray-500" />;
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'approved': return 'bg-green-100 text-green-800';
-      case 'pending': return 'bg-yellow-100 text-yellow-800';
+      case 'approved': return 'bg-teal-100 text-teal-800';
+      case 'pending': return 'bg-orange-100 text-orange-800';
       case 'rejected': return 'bg-red-100 text-red-800';
       default: return 'bg-gray-100 text-gray-800';
     }
@@ -137,7 +137,7 @@ export default async function DocumentsPage() {
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <Upload className="h-8 w-8 text-purple-600" />
+              <Upload className="h-8 w-8 text-orange-600" />
               <div>
                 <h1 className="text-2xl font-bold text-gray-900">Manajemen Dokumen</h1>
                 <p className="text-gray-600">Kelola dokumen dan file sistem infrastruktur hijau</p>
@@ -148,7 +148,7 @@ export default async function DocumentsPage() {
                 <Folder className="h-4 w-4 mr-2" />
                 Buat Folder
               </Button>
-              <Button className="bg-purple-600 hover:bg-purple-700">
+              <Button className="bg-orange-600 hover:bg-orange-700">
                 <Upload className="h-4 w-4 mr-2" />
                 Upload Dokumen
               </Button>

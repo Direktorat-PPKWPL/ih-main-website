@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { revokeRefreshToken } from '@/lib/auth';
+import { Logger } from '@/lib/logger';
 
 export async function POST(request: NextRequest) {
+  const startTime = Date.now();
+  
   try {
     const refreshToken = request.cookies.get('refresh-token')?.value;
     
@@ -31,10 +34,11 @@ export async function POST(request: NextRequest) {
       path: '/'
     });
 
+    Logger.logSuccess(request, 'User logged out successfully', startTime);
     return response;
 
   } catch (error) {
-    console.error('Logout API error:', error);
+    Logger.logError(request, error, startTime);
     return NextResponse.json(
       { success: false, message: 'Terjadi kesalahan sistem' },
       { status: 500 }

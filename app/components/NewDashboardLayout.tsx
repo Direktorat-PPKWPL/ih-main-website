@@ -51,10 +51,10 @@ export default function DashboardLayout({ children, user, title }: DashboardLayo
 
   const getRoleColor = (role: string) => {
     const colors: Record<string, string> = {
-      'High': 'bg-red-100 text-red-800',
+      'High': 'bg-orange-100 text-orange-800',
       'Medium': 'bg-blue-100 text-blue-800',
-      'Low': 'bg-gray-100 text-gray-800',
-      'Author': 'bg-green-100 text-green-800'
+      'Low': 'bg-teal-100 text-teal-800',
+      'Author': 'bg-orange-100 text-orange-800'
     };
     return colors[role] || 'bg-gray-100 text-gray-800';
   };

@@ -24,7 +24,7 @@ export default function AdminStatsCard({
 }: AdminStatsCardProps) {
   const getChangeColor = (type: string) => {
     switch (type) {
-      case 'increase': return 'text-green-600';
+      case 'increase': return 'text-teal-600';
       case 'decrease': return 'text-red-600';
       case 'neutral': return 'text-gray-600';
       default: return 'text-gray-600';

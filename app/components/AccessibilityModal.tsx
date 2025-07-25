@@ -89,7 +89,7 @@ export default function AccessibilityModal({ isOpen, onClose }: AccessibilityMod
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => setFontSize(Math.max(12, fontSize - 2))}
-                className="px-3 py-2 bg-teal-100 text-teal-800 rounded hover:bg-teal-200 transition-colors"
+                className="px-3 py-2 bg-orange-100 text-orange-800 rounded hover:bg-orange-200 transition-colors"
                 aria-label="Perkecil ukuran teks"
               >
                 A-
@@ -99,7 +99,7 @@ export default function AccessibilityModal({ isOpen, onClose }: AccessibilityMod
               </span>
               <button
                 onClick={() => setFontSize(Math.min(24, fontSize + 2))}
-                className="px-3 py-2 bg-teal-100 text-teal-800 rounded hover:bg-teal-200 transition-colors"
+                className="px-3 py-2 bg-orange-100 text-orange-800 rounded hover:bg-orange-200 transition-colors"
                 aria-label="Perbesar ukuran teks"
               >
                 A+
@@ -217,7 +217,7 @@ export default function AccessibilityModal({ isOpen, onClose }: AccessibilityMod
             </button>
             <button
               onClick={onClose}
-              className="px-6 py-2 bg-teal-600 text-white rounded hover:bg-teal-700 transition-colors"
+              className="px-6 py-2 bg-teal-800 text-white rounded hover:bg-teal-900 transition-colors"
             >
               Terapkan Pengaturan
             </button>

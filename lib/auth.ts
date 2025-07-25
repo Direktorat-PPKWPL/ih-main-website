@@ -71,16 +71,21 @@ export function verifyRefreshToken(token: string): JWTPayload | null {
   }
 }
 
-export async function authenticateUser(email: string, password: string): Promise<LoginResponse> {
+export async function authenticateUser(emailOrUsername: string, password: string): Promise<LoginResponse> {
   try {
-    const user = await prisma.ih_ppkwpl_user.findUnique({
-      where: { email_or_username: email }
+    const user = await prisma.ih_ppkwpl_user.findFirst({
+      where: {
+        OR: [
+          { email: emailOrUsername },
+          { username: emailOrUsername }
+        ]
+      }
     });
 
     if (!user) {
       return { 
         success: false, 
-        message: 'Email atau password tidak valid' 
+        message: 'Email/username atau password tidak valid' 
       };
     }
 
@@ -89,13 +94,13 @@ export async function authenticateUser(email: string, password: string): Promise
     if (!isValidPassword) {
       return { 
         success: false, 
-        message: 'Email atau password tidak valid' 
+        message: 'Email/username atau password tidak valid' 
       };
     }
 
     const tokenPayload = {
       userId: user.id,
-      email: user.email_or_username,
+      email: user.email,
       role: user.role_user
     };
 
@@ -115,7 +120,7 @@ export async function authenticateUser(email: string, password: string): Promise
       success: true,
       user: {
         id: user.id,
-        email: user.email_or_username,
+        email: user.email,
         role: user.role_user
       },
       accessToken

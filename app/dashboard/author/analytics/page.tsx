@@ -202,12 +202,12 @@ export default async function AnalyticsPage() {
                 <div>
                   <p className="text-sm font-medium text-gray-600">Followers</p>
                   <p className="text-2xl font-bold text-gray-900">{overallStats.followers.toLocaleString()}</p>
-                  <p className="text-xs text-green-600 flex items-center mt-1">
+                  <p className="text-xs text-teal-600 flex items-center mt-1">
                     <ArrowUp className="h-3 w-3 mr-1" />
                     +7.3% dari bulan lalu
                   </p>
                 </div>
-                <Users className="h-8 w-8 text-purple-500" />
+                <Users className="h-8 w-8 text-blue-500" />
               </div>
             </CardContent>
           </Card>
@@ -218,12 +218,12 @@ export default async function AnalyticsPage() {
                 <div>
                   <p className="text-sm font-medium text-gray-600">Avg Read Time</p>
                   <p className="text-2xl font-bold text-gray-900">{overallStats.avgReadTime}</p>
-                  <p className="text-xs text-green-600 flex items-center mt-1">
+                  <p className="text-xs text-teal-600 flex items-center mt-1">
                     <ArrowUp className="h-3 w-3 mr-1" />
                     +7.7% dari bulan lalu
                   </p>
                 </div>
-                <Target className="h-8 w-8 text-orange-500" />
+                <Target className="h-8 w-8 text-orange-600" />
               </div>
             </CardContent>
           </Card>
@@ -354,7 +354,7 @@ export default async function AnalyticsPage() {
                       <div className="flex items-center space-x-2">
                         <div className="w-16 bg-gray-200 rounded-full h-2">
                           <div 
-                            className="bg-green-500 h-2 rounded-full" 
+                            className="bg-teal-600 h-2 rounded-full" 
                             style={{ width: `${interest.percentage}%` }}
                           />
                         </div>

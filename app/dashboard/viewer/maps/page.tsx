@@ -83,20 +83,20 @@ export default async function MapsPage() {
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case 'Taman Kota': return 'bg-green-500';
-      case 'Hutan Kota': return 'bg-emerald-600';
-      case 'Koridor Hijau': return 'bg-blue-500';
-      case 'Roof Garden': return 'bg-purple-500';
-      case 'Vertical Garden': return 'bg-orange-500';
+      case 'Taman Kota': return 'bg-teal-600';
+      case 'Hutan Kota': return 'bg-teal-700';
+      case 'Koridor Hijau': return 'bg-blue-600';
+      case 'Roof Garden': return 'bg-orange-600';
+      case 'Vertical Garden': return 'bg-orange-600';
       default: return 'bg-gray-500';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'Aktif': return 'text-green-600';
+      case 'Aktif': return 'text-teal-600';
       case 'Dalam Pembangunan': return 'text-blue-600';
-      case 'Maintenance': return 'text-yellow-600';
+      case 'Maintenance': return 'text-orange-600';
       default: return 'text-gray-600';
     }
   };

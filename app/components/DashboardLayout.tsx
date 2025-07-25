@@ -158,7 +158,7 @@ export default function DashboardLayout({ children, role, title }: DashboardLayo
                   <span className={`px-3 py-1 rounded-full text-xs font-medium ${getRoleBadgeColor(user.role_user)}`}>
                     {user.role_user}
                   </span>
-                  <span className="text-sm text-gray-700">{user.email_or_username}</span>
+                  <span className="text-sm text-gray-700">{user.email}</span>
                   <button
                     onClick={handleLogout}
                     className="text-gray-400 hover:text-gray-600 transition-colors"

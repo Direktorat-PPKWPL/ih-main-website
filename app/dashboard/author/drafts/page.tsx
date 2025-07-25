@@ -322,7 +322,7 @@ export default async function DraftsPage() {
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-2">
                           <div 
-                            className="bg-orange-500 h-2 rounded-full" 
+                            className="bg-orange-600 h-2 rounded-full" 
                             style={{ width: `${draft.progress}%` }}
                           />
                         </div>
@@ -455,9 +455,9 @@ export default async function DraftsPage() {
                 <h4 className="font-medium text-orange-800 mb-2">Perhatikan Deadline</h4>
                 <p className="text-orange-700">Set reminder untuk draft yang mendekati deadline.</p>
               </div>
-              <div className="p-4 bg-green-50 rounded-lg">
-                <h4 className="font-medium text-green-800 mb-2">Batch Similar Tasks</h4>
-                <p className="text-green-700">Kerjakan tugas serupa secara bersamaan untuk efisiensi.</p>
+              <div className="p-4 bg-teal-50 rounded-lg">
+                <h4 className="font-medium text-teal-800 mb-2">Batch Similar Tasks</h4>
+                <p className="text-teal-700">Kerjakan tugas serupa secara bersamaan untuk efisiensi.</p>
               </div>
             </div>
           </CardContent>

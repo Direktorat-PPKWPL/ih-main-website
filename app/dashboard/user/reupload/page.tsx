@@ -77,8 +77,8 @@ export default async function ReuploadPage() {
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'uploaded': return <CheckCircle className="h-4 w-4 text-green-500" />;
-      case 'pending_review': return <RefreshCw className="h-4 w-4 text-blue-500" />;
+      case 'uploaded': return <CheckCircle className="h-4 w-4 text-teal-600" />;
+      case 'pending_review': return <RefreshCw className="h-4 w-4 text-blue-600" />;
       case 'missing': return <AlertCircle className="h-4 w-4 text-red-500" />;
       default: return <FileText className="h-4 w-4 text-gray-500" />;
     }
@@ -86,7 +86,7 @@ export default async function ReuploadPage() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'uploaded': return 'bg-green-100 text-green-800';
+      case 'uploaded': return 'bg-teal-100 text-teal-800';
       case 'pending_review': return 'bg-blue-100 text-blue-800';
       case 'missing': return 'bg-red-100 text-red-800';
       default: return 'bg-gray-100 text-gray-800';

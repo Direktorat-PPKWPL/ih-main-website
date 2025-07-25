@@ -95,10 +95,10 @@ export default async function SubmissionHistoryPage() {
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'approved': return <CheckCircle className="h-4 w-4 text-green-500" />;
+      case 'approved': return <CheckCircle className="h-4 w-4 text-teal-600" />;
       case 'rejected': return <XCircle className="h-4 w-4 text-red-500" />;
-      case 'in_review': return <RefreshCw className="h-4 w-4 text-blue-500" />;
-      case 'pending': return <Clock className="h-4 w-4 text-yellow-500" />;
+      case 'in_review': return <RefreshCw className="h-4 w-4 text-blue-600" />;
+      case 'pending': return <Clock className="h-4 w-4 text-orange-600" />;
       case 'draft': return <Edit className="h-4 w-4 text-gray-500" />;
       default: return <AlertCircle className="h-4 w-4 text-gray-500" />;
     }
@@ -106,10 +106,10 @@ export default async function SubmissionHistoryPage() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'approved': return 'bg-green-100 text-green-800';
+      case 'approved': return 'bg-teal-100 text-teal-800';
       case 'rejected': return 'bg-red-100 text-red-800';
       case 'in_review': return 'bg-blue-100 text-blue-800';
-      case 'pending': return 'bg-yellow-100 text-yellow-800';
+      case 'pending': return 'bg-orange-100 text-orange-800';
       case 'draft': return 'bg-gray-100 text-gray-800';
       default: return 'bg-gray-100 text-gray-800';
     }
