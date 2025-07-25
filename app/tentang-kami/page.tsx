@@ -3,13 +3,12 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { redirect } from "next/navigation";
-import { ChevronDownIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { ChevronDownIcon, Bars3Icon, XMarkIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 
-import AccessibilityModal from "./components/AccessibilityModal";
-import InfrastructureMapWrapper from "./components/InfrastructureMapWrapper";
-import "./accessibility.css";
+import AccessibilityModal from "../components/AccessibilityModal";
+import "../accessibility.css";
 
-export default function Home() {
+export default function TentangKami() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isAccessibilityOpen, setIsAccessibilityOpen] = useState(false);
   const [isLayananDropdownOpen, setIsLayananDropdownOpen] = useState(false);
@@ -107,7 +106,7 @@ export default function Home() {
               </a>
               <a
                 href="/tentang-kami"
-                className="text-gray-600 hover:text-orange-600 transition-colors text-sm"
+                className="text-orange-600 font-medium transition-colors text-sm"
                 role="menuitem"
               >
                 Tentang Kami
@@ -253,7 +252,7 @@ export default function Home() {
             </a>
             <a
               href="/tentang-kami"
-              className="block py-3 text-gray-700 hover:text-orange-600 transition-colors border-b border-gray-100"
+              className="block py-3 text-orange-600 font-medium transition-colors border-b border-gray-100"
               onClick={closeMobileMenu}
             >
               Tentang Kami
@@ -331,7 +330,7 @@ export default function Home() {
             </div>
 
             <a
-              href="/contact"
+              href="#contact"
               className="block py-3 text-gray-700 hover:text-orange-600 transition-colors border-b border-gray-100"
               onClick={closeMobileMenu}
             >
@@ -357,153 +356,288 @@ export default function Home() {
         onClose={() => setIsAccessibilityOpen(false)} 
       />
 
+      {/* Breadcrumb */}
+      <section className={`container mx-auto px-6 lg:px-8 py-4 max-w-7xl transition-all duration-1000 ${
+        isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+      }`}>
+        <nav className="flex items-center space-x-2 text-sm text-gray-600" aria-label="Breadcrumb">
+          <a href="/" className="hover:text-orange-600 transition-colors">Beranda</a>
+          <span className="text-gray-400">/</span>
+          <span className="text-orange-600 font-medium">Tentang Kami</span>
+        </nav>
+      </section>
+
       {/* Hero Section */}
       <section className={`relative flex items-center justify-center px-6 lg:px-8 py-16 transition-all duration-1000 delay-200 ${
         isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
       }`} role="banner">
         <div className="container mx-auto text-center max-w-7xl">
+          <button
+            onClick={() => window.history.back()}
+            className="inline-flex items-center mb-6 text-orange-600 hover:text-orange-700 transition-colors group"
+            aria-label="Kembali ke halaman sebelumnya"
+          >
+            <ArrowLeftIcon className="h-5 w-5 mr-2 group-hover:-translate-x-1 transition-transform" />
+            Kembali
+          </button>
           <h1 className="text-5xl md:text-6xl font-bold text-teal-800 mb-6 text-center">
-            Infrastruktur Hijau<br /><span className="text-orange-500">untuk Masa Depan Bumi </span>
+            Tentang<br /><span className="text-orange-500">Infrastruktur Hijau</span>
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed">
-            Mewujudkan lingkungan yang lestari melalui inovasi <br /> infrastruktur hijau untuk generasi masa depan Indonesia.
+            Mengenal lebih dalam tentang visi, misi, dan komitmen kami dalam <br /> 
+            membangun infrastruktur hijau untuk masa depan Indonesia yang berkelanjutan.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#features" className="bg-orange-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-orange-700 transition-all duration-300 hover:scale-105" aria-label="Jelajahi solusi infrastruktur hijau">
-              Lihat Solusi
-            </a>
-            <a href="/tentang-kami" className="border-2 border-orange-600 text-orange-600 px-8 py-4 rounded-full text-lg font-medium hover:bg-orange-600 hover:text-white transition-all duration-300 hover:scale-105" aria-label="Pelajari lebih lanjut tentang infrastruktur hijau">
-              Pelajari Lebih Lanjut
-            </a>
+        </div>
+      </section>
+
+      {/* Visi Misi Section */}
+      <section className={`container mx-auto px-6 lg:px-8 py-20 max-w-7xl transition-all duration-1000 delay-400 ${
+        isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+      }`}>
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
+          {/* Visi */}
+          <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500">
+            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+              <svg className="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+            </div>
+            <h2 className="text-3xl font-bold text-teal-800 mb-4">Visi</h2>
+            <p className="text-gray-600 leading-relaxed text-lg">
+              Menjadi pusat unggulan dalam pengembangan infrastruktur hijau yang berkelanjutan, 
+              inovatif, dan ramah lingkungan untuk mewujudkan Indonesia yang hijau dan lestari 
+              bagi generasi masa depan.
+            </p>
+          </div>
+
+          {/* Misi */}
+          <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500">
+            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+              <svg className="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h2 className="text-3xl font-bold text-teal-800 mb-4">Misi</h2>
+            <ul className="text-gray-600 leading-relaxed text-lg space-y-3">
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-orange-500 rounded-full mt-3 mr-3 flex-shrink-0"></span>
+                Mengembangkan teknologi infrastruktur hijau yang inovatif dan berkelanjutan
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-orange-500 rounded-full mt-3 mr-3 flex-shrink-0"></span>
+                Meningkatkan kualitas lingkungan hidup melalui penerapan solusi hijau
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-orange-500 rounded-full mt-3 mr-3 flex-shrink-0"></span>
+                Membangun kemitraan strategis dengan berbagai pihak
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-orange-500 rounded-full mt-3 mr-3 flex-shrink-0"></span>
+                Memberikan edukasi dan sosialisasi kepada masyarakat
+              </li>
+            </ul>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section id="features" className={`container mx-auto px-6 lg:px-8 py-20 max-w-7xl transition-all duration-1000 delay-400 ${
+      {/* Sejarah Section */}
+      <section className={`bg-teal-800 text-white py-20 transition-all duration-1000 delay-600 ${
         isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-      }`} role="main" aria-labelledby="features-heading">
-        <h2 id="features-heading" className="text-4xl font-bold text-center text-teal-800 mb-16">
-          Solusi Infrastruktur Hijau
-        </h2>
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-12" role="list">
-          <div className={`bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 ${
-            isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-          }`} style={{ animationDelay: '600ms' }} role="listitem" tabIndex={0}>
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 transition-transform duration-300 hover:rotate-12" aria-hidden="true">
-              <svg className="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-              </svg>
-            </div>
-            <h3 className="text-2xl font-semibold text-teal-800 mb-4">Smart Water Management</h3>
-            <p className="text-gray-600 leading-relaxed">
-              Advanced rainwater harvesting and smart irrigation systems that optimize water usage and reduce environmental impact.
-            </p>
-          </div>
-
-          <div className={`bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 ${
-            isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-          }`} style={{ animationDelay: '800ms' }} role="listitem" tabIndex={0}>
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 transition-transform duration-300 hover:rotate-12" aria-hidden="true">
-              <svg className="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-              </svg>
-            </div>
-            <h3 className="text-2xl font-semibold text-teal-800 mb-4">Renewable Energy</h3>
-            <p className="text-gray-600 leading-relaxed">
-              Solar panels and wind energy solutions integrated seamlessly into urban infrastructure for clean power generation.
-            </p>
-          </div>
-
-          <div className={`bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 ${
-            isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-          }`} style={{ animationDelay: '1000ms' }} role="listitem" tabIndex={0}>
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 transition-transform duration-300 hover:rotate-12" aria-hidden="true">
-              <svg className="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-              </svg>
-            </div>
-            <h3 className="text-2xl font-semibold text-teal-800 mb-4">Green Spaces</h3>
-            <p className="text-gray-600 leading-relaxed">
-              Vertical gardens, green roofs, and urban forests that improve air quality and create healthier living environments.
-            </p>
-          </div>
-        </div>  
-      </section>
-
-      {/* Statistics Section */}
-      <section className={`bg-teal-800 text-white py-20 transition-all duration-1000 delay-700 ${
-        isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-      }`} role="region" aria-labelledby="stats-heading">
+      }`}>
         <div className="container mx-auto px-6 lg:px-8 max-w-7xl">
-          <h2 id="stats-heading" className="sr-only">Statistik Pencapaian Proyek</h2>
-          <div className="grid md:grid-cols-4 gap-8 text-center">
-            <div className="transition-transform duration-300 hover:scale-110" tabIndex={0}>
-              <div className="text-4xl font-bold mb-2 transition-all duration-500 hover:text-orange-400" aria-label="500 lebih proyek selesai">500+</div>
-              <div className="text-blue-100">Projects Completed</div>
-            </div>
-            <div className="transition-transform duration-300 hover:scale-110" tabIndex={0}>
-              <div className="text-4xl font-bold mb-2 transition-all duration-500 hover:text-orange-400" aria-label="85 persen pengurangan energi">85%</div>
-              <div className="text-blue-100">Energy Reduction</div>
-            </div>
-            <div className="transition-transform duration-300 hover:scale-110" tabIndex={0}>
-              <div className="text-4xl font-bold mb-2 transition-all duration-500 hover:text-orange-400" aria-label="1 juta lebih pohon ditanam">1M+</div>
-              <div className="text-blue-100">Trees Planted</div>
-            </div>
-            <div className="transition-transform duration-300 hover:scale-110" tabIndex={0}>
-              <div className="text-4xl font-bold mb-2 transition-all duration-500 hover:text-orange-400" aria-label="50 lebih kota dilayani">50+</div>
-              <div className="text-blue-100">Cities Served</div>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">Sejarah dan Perkembangan</h2>
+            <p className="text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
+              Perjalanan panjang dalam membangun Indonesia yang berkelanjutan
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Timeline Line */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-orange-500 hidden md:block"></div>
+
+            <div className="space-y-12">
+              {/* Timeline Item 1 */}
+              <div className="relative flex items-center md:justify-between">
+                <div className="md:w-5/12 bg-white text-gray-800 p-6 rounded-lg shadow-lg">
+                  <div className="text-orange-600 font-bold text-lg mb-2">2015</div>
+                  <h3 className="text-xl font-semibold mb-3">Inisiatif Awal</h3>
+                  <p className="text-gray-600">
+                    Pembentukan tim khusus untuk mengkaji potensi infrastruktur hijau di Indonesia 
+                    sebagai solusi permasalahan lingkungan perkotaan.
+                  </p>
+                </div>
+                <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-orange-500 rounded-full"></div>
+                <div className="md:w-5/12"></div>
+              </div>
+
+              {/* Timeline Item 2 */}
+              <div className="relative flex items-center md:justify-between">
+                <div className="md:w-5/12"></div>
+                <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-orange-500 rounded-full"></div>
+                <div className="md:w-5/12 bg-white text-gray-800 p-6 rounded-lg shadow-lg">
+                  <div className="text-orange-600 font-bold text-lg mb-2">2018</div>
+                  <h3 className="text-xl font-semibold mb-3">Pilot Project</h3>
+                  <p className="text-gray-600">
+                    Peluncuran proyek percontohan infrastruktur hijau pertama di Jakarta 
+                    dengan fokus pada sistem pengelolaan air hujan dan taman vertikal.
+                  </p>
+                </div>
+              </div>
+
+              {/* Timeline Item 3 */}
+              <div className="relative flex items-center md:justify-between">
+                <div className="md:w-5/12 bg-white text-gray-800 p-6 rounded-lg shadow-lg">
+                  <div className="text-orange-600 font-bold text-lg mb-2">2020</div>
+                  <h3 className="text-xl font-semibold mb-3">Ekspansi Nasional</h3>
+                  <p className="text-gray-600">
+                    Program infrastruktur hijau diperluas ke 15 kota besar di Indonesia 
+                    dengan dukungan penuh dari pemerintah pusat dan daerah.
+                  </p>
+                </div>
+                <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-orange-500 rounded-full"></div>
+                <div className="md:w-5/12"></div>
+              </div>
+
+              {/* Timeline Item 4 */}
+              <div className="relative flex items-center md:justify-between">
+                <div className="md:w-5/12"></div>
+                <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-orange-500 rounded-full"></div>
+                <div className="md:w-5/12 bg-white text-gray-800 p-6 rounded-lg shadow-lg">
+                  <div className="text-orange-600 font-bold text-lg mb-2">2025</div>
+                  <h3 className="text-xl font-semibold mb-3">Era Digital</h3>
+                  <p className="text-gray-600">
+                    Peluncuran platform digital untuk monitoring dan pengelolaan infrastruktur hijau 
+                    secara real-time di seluruh Indonesia.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Infrastructure Achievements Map Section */}
-      <section
-      className={`container mx-auto px-6 lg:px-8 py-12 max-w-7xl transition-all duration-1000 delay-800 ${
+      {/* Tim Section */}
+      <section className={`container mx-auto px-6 lg:px-8 py-20 max-w-7xl transition-all duration-1000 delay-800 ${
         isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-      }`}
-      role="region"
-      aria-labelledby="achievements-heading"
-    >
-      <div className="text-center mb-12">
-        <h2 id="achievements-heading" className="text-4xl font-bold text-teal-800 mb-6">
-          Capaian Infrastruktur Hijau di Indonesia
-        </h2>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          Jelajahi proyek-proyek infrastruktur hijau yang telah berhasil diimplementasikan di berbagai daerah Indonesia.
-          Lihat detail lokasi, timeline, anggaran, dan dampak positif yang telah dicapai.
-        </p>
-      </div>
+      }`}>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-teal-800 mb-6">Tim Kami</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Profesional berpengalaman yang berdedikasi untuk menciptakan masa depan yang berkelanjutan
+          </p>
+        </div>
 
-      <InfrastructureMapWrapper className="w-full" />
-    </section>
+        <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+          {/* Team Member 1 */}
+          <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 text-center">
+            <div className="w-24 h-24 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+              <span className="text-white text-2xl font-bold">DR</span>
+            </div>
+            <h3 className="text-xl font-semibold text-teal-800 mb-2">Dr. Rina Sari, M.Eng</h3>
+            <p className="text-orange-600 font-medium mb-4">Direktur Program</p>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Ahli teknik lingkungan dengan pengalaman 15 tahun dalam pengembangan infrastruktur berkelanjutan.
+            </p>
+          </div>
 
-    {/* CTA Section */}
-    <section
-      className={`container mx-auto px-6 lg:px-8 py-12 text-center max-w-7xl transition-all duration-1000 delay-1000 ${
+          {/* Team Member 2 */}
+          <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 text-center">
+            <div className="w-24 h-24 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+              <span className="text-white text-2xl font-bold">AB</span>
+            </div>
+            <h3 className="text-xl font-semibold text-teal-800 mb-2">Ahmad Budi, S.T., M.T.</h3>
+            <p className="text-orange-600 font-medium mb-4">Manajer Teknis</p>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Spesialis dalam desain dan implementasi sistem infrastruktur hijau perkotaan.
+            </p>
+          </div>
+
+          {/* Team Member 3 */}
+          <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 text-center">
+            <div className="w-24 h-24 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+              <span className="text-white text-2xl font-bold">SW</span>
+            </div>
+            <h3 className="text-xl font-semibold text-teal-800 mb-2">Sari Wijaya, M.Si.</h3>
+            <p className="text-orange-600 font-medium mb-4">Koordinator Riset</p>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Peneliti berpengalaman dalam bidang ekologi dan dampak lingkungan infrastruktur hijau.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Nilai-nilai Section */}
+      <section className={`bg-gradient-to-r from-blue-50 to-orange-50 py-20 transition-all duration-1000 delay-1000 ${
         isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-      }`}
-      role="region"
-      aria-labelledby="cta-heading"
-    >
-      <h2 id="cta-heading" className="text-4xl font-bold text-teal-800 mb-6">
-        Butuh Infrastruktur yang Lebih Baik?
-      </h2>
-      <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-        Kini saatnya bergerak bersama membangun infrastruktur yang tangguh, ramah lingkungan, dan berdampak langsung bagi masyarakat.
-      </p>
-      <button
-        className="bg-orange-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-orange-700 transition-all duration-300 hover:scale-105 hover:shadow-lg"
-        aria-label="Mulai proyek infrastruktur hijau Anda hari ini"
-      >
-        Ajukan Sekarang
-      </button>
-    </section>
+      }`}>
+        <div className="container mx-auto px-6 lg:px-8 max-w-7xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-teal-800 mb-6">Nilai-nilai Kami</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Prinsip-prinsip yang menjadi fondasi dalam setiap langkah pengembangan infrastruktur hijau
+            </p>
+          </div>
 
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Nilai 1 */}
+            <div className="text-center">
+              <div className="w-16 h-16 bg-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-teal-800 mb-3">Berkelanjutan</h3>
+              <p className="text-gray-600">
+                Komitmen untuk menciptakan solusi yang berdampak jangka panjang bagi lingkungan dan masyarakat.
+              </p>
+            </div>
+
+            {/* Nilai 2 */}
+            <div className="text-center">
+              <div className="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-teal-800 mb-3">Inovatif</h3>
+              <p className="text-gray-600">
+                Selalu mencari dan menerapkan teknologi terdepan dalam pengembangan infrastruktur hijau.
+              </p>
+            </div>
+
+            {/* Nilai 3 */}
+            <div className="text-center">
+              <div className="w-16 h-16 bg-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-teal-800 mb-3">Kolaboratif</h3>
+              <p className="text-gray-600">
+                Membangun kemitraan yang kuat dengan berbagai stakeholder untuk mencapai tujuan bersama.
+              </p>
+            </div>
+
+            {/* Nilai 4 */}
+            <div className="text-center">
+              <div className="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-teal-800 mb-3">Integritas</h3>
+              <p className="text-gray-600">
+                Menjalankan setiap program dengan transparansi, akuntabilitas, dan tanggung jawab penuh.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
-      <footer className={`bg-white py-6 transition-all duration-1000 delay-1200 ${
+      <footer className={`bg-white py-6 transition-all duration-1000 delay-1400 ${
         isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
       }`} role="contentinfo">
         <div className="container mx-auto px-6 lg:px-8 max-w-7xl">
