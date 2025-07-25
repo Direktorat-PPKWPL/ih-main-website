@@ -11,7 +11,8 @@
     "start:verbose": "NODE_ENV=production DEBUG=* node .next/standalone/server.js",
     "lint": "next lint",
     "db:seed": "tsx prisma/seed.ts",
-    "db:reset": "npx prisma migrate reset && npm run db:seed"
+    "db:reset": "npx prisma migrate deploy && npm run db:seed",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.4",
